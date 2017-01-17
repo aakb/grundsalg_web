@@ -1,0 +1,28 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://test.grundsalg-web.vm/
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '/vagrant/htdocs/web'
+      region_map:
+        footer: "#footer"
+      text:
+        log_out: "Log ud"
+        log_in: "edit-submit"
+        username_field: "edit-name"
+        password_field: "edit-pass"
